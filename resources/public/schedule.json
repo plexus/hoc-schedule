@@ -1,0 +1,39 @@
+{
+	"copyright":"Licensed under a Creative Commons Attribution-NonCommercial 3.0 License http:\/\/creativecommons.org\/licenses\/by-nc\/3.0\/. Free for non-commercial use. Contact halvin@clashfinder.com for other uses.",
+	"modified":"2019-07-03 13:37",
+	"name":"Heart of Clojure 2019",
+	"id":"heartofclojure2019",
+	"url":"https:\/\/clashfinder.com\/s\/heartofclojure2019\/",
+	"printAdvisory":2,
+	"timezone":"Europe\/Brussels",
+	"tzOffset":7200,
+	"tzNote":"Start and end times are given in the timezone of the event. Offset by -tzOffset for UTC.",
+	"locations":[
+		{
+			"name":"New Stage",
+			"events":[
+				{"name":"Doors & breakfast","short":"doorsb(1)","start":"2019-08-02 09:00","end":"2019-08-02 09:30"},
+				{"name":"Introduction","short":"introd(1)","start":"2019-08-02 09:30","end":"2019-08-02 09:45"},
+				{"name":"Yulia Startsev - To loosen up, to put together.","short":"yulias(1)","start":"2019-08-02 09:45","end":"2019-08-02 10:30"},
+				{"name":"Fabrizio Ferrai - Live-coding a Compiler: A Challenge ","short":"fabriz(1)","start":"2019-08-02 11:00","end":"2019-08-02 11:30"},
+				{"name":"Lisa Passing - Come with us to the world of the fragment shader","short":"lisapa(1)","start":"2019-08-02 11:35","end":"2019-08-02 12:05"},
+				{"name":"Chris Adams - What you can do when software is heating the world","short":"chrisa(1)","start":"2019-08-02 13:25","end":"2019-08-02 13:55"},
+				{"name":"Lily M. Goh - Engineering Empathy","short":"lilymg(1)","start":"2019-08-02 14:00","end":"2019-08-02 14:30"},
+				{"name":"Tiago Luchini - Building Resilient Clojure Apps","short":"tiagol(1)","start":"2019-08-02 15:00","end":"2019-08-02 15:30"},
+				{"name":"Mey Beisaron - Back to Future: How 80s Arcade Games Taught me Clojure","short":"meybei(1)","start":"2019-08-02 15:35","end":"2019-08-02 16:05"},
+				{"name":"Ramón Huidobro - How teaching kids to code can make you a better developer","short":"ramnhu(1)","start":"2019-08-02 16:30","end":"2019-08-02 17:00"},
+				{"name":"Sarah Groff Hennigh-Palermo - Raving Through the 90s with SVG and Clojurescript","short":"sarahg(1)","start":"2019-08-02 17:05","end":"2019-08-02 17:35"},
+				{"name":"Closing remarks","short":"closin(1)","start":"2019-08-02 17:35","end":"2019-08-02 17:50"},
+				{"name":"Doors & breakfast","short":"doorsb(2)","start":"2019-08-03 09:45","end":"2019-08-03 10:15"},
+				{"name":"Daniel Compton - Money for Nothing: The past and future of funding OSS","short":"daniel(1)","start":"2019-08-03 10:15","end":"2019-08-03 10:45"},
+				{"name":"Chelsey Mitchell - Does Clojure wear Prada?","short":"chelse(1)","start":"2019-08-03 11:05","end":"2019-08-03 11:35"},
+				{"name":"Maarten Truyens - Innovation in an immutable industry: Clojure in law","short":"maarte(1)","start":"2019-08-03 11:40","end":"2019-08-03 12:10"},
+				{"name":"Jivago Alves -  '(Growing Function-Oriented Software (With Parenthesis))","short":"jivago1(1)","start":"2019-08-03 16:00","end":"2019-08-03 16:30"},
+				{"name":"Tobias Pfeiffer - Functioning Among Humans","short":"tobias(1)","start":"2019-08-03 16:35","end":"2019-08-03 17:05"},
+				{"name":"Lightning talks","short":"lightn(1)","start":"2019-08-03 17:30","end":"2019-08-03 18:30"},
+				{"name":"Rachel Lawson - My opensource project; It’s all about the code. Oh, wait, no it’s not...","short":"rachel(1)","start":"2019-08-03 18:35","end":"2019-08-03 19:20"},
+				{"name":"Thank you & goodbye","short":"thanky(1)","start":"2019-08-03 19:20","end":"2019-08-03 19:35"}
+			]
+		}
+	]
+}
