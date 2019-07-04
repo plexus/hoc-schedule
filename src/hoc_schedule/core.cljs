@@ -26,7 +26,7 @@
   (DateTime/fromTimestamp ts))
 
 (defn month [dt]
-  (.getMonth dt))
+  (inc (.getMonth dt)))
 
 (defn day-of-month [dt]
   (.getDate dt))
