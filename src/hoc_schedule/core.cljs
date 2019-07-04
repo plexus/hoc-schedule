@@ -69,8 +69,12 @@
 (defn fetch-data! []
   (.then
    (js/Promise.all
-    #js[(js/fetch "activities.json")
-        (js/fetch "schedule.json")])
+    ;; These are updated every two minutes from the clashfinder/activities app
+    ;; We can't fetch directly from the source because of CORS restrictions.
+    #js [(js/fetch "http://arnebrasseur.net/hoc/activities.json")
+         (js/fetch "http://arnebrasseur.net/hoc/schedule.json")]
+    #_#js [(js/fetch "activities.json") (js/fetch "schedule.json")]
+    )
    (fn [resp]
      (.then
       (js/Promise.all (map #(.json %) resp))
