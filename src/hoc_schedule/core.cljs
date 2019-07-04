@@ -40,25 +40,21 @@
     (format "%02d:%02d" (.getHours dt) (.getMinutes dt))))
 
 (defn event-view [day-events]
-  [:table
+  [:table.collapse.ba.br2.b--black-10.pv2.ph3.mt4.sans-serif
    [:thead
     [:tr.tac
      [:th "Time"]
      [:th "Event / Activity"]]]
    [:tbody
-    (apply concat
-           (for [[_ events] day-events
-                 :let [dt (date-time (:start (first events)))]]
-             (cons
-              [:tr
-               [:td (day-of-week dt) " " (day-of-month dt) "/" (month dt)]]
-              (for [{:keys [name start end type]} events]
-                [:tr
-                 [:td (format-time start) " — " (format-time end)]
-                 [(if (= :activity type)
-                    :td.bg-washed-green
-                    :td)
-                  name]]))))]])
+    (for [[_ events] day-events
+          :let [dt (date-time (:start (first events)))]]
+      (cons
+       [:tr.striped--near-white
+        [:td.ph3.pt3.pb2.b {:colspan 2} (day-of-week dt) " " (day-of-month dt) "/" (month dt)]]
+       (for [{:keys [name start end type]} events]
+         [:tr.striped--near-white
+          [:td.pv2.ph3 (format-time start) " — " (format-time end)]
+          [(if (= :activity type) :td.pv2.ph3.bg-washed-green :td.pv2.ph3) name]])))]])
 
 (defn draw [activities schedule]
   (def activities activities)

@@ -1,6 +1,5 @@
 (ns poor.hiccup
   (:require [goog.dom :as gdom]
-            [cljs-bean.core :refer [bean ->clj ->js]]
             [clojure.string :as str]))
 
 (defn split-tag [tag]
@@ -21,6 +20,14 @@
        (next tail)
        tail)]))
 
+(declare h)
+
+(defn h* [hiccup]
+  (let [els (h hiccup)]
+    (if (seq? els)
+      els
+      (list els))))
+
 (defn h [hiccup]
   (cond
     (string? hiccup)
@@ -29,13 +36,12 @@
     (vector? hiccup)
     (let [[tag attrs children] (split-el hiccup)
           el (gdom/createElement tag)]
-      (gdom/setProperties el (->js attrs))
-      (apply gdom/append el (mapcat (fn [child]
-                                      (if (seq? child)
-                                        (map h child)
-                                        [(h child)]))
-                                    children))
+      (gdom/setProperties el (clj->js attrs))
+      (apply gdom/append el (mapcat h* children))
       el)
+
+    (seq? hiccup)
+    (mapcat h* hiccup)
 
     :else
     (h (str hiccup))))
