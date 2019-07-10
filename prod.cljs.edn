@@ -1,0 +1,4 @@
+^{:open-url false}
+{:main          hoc-schedule.core
+ :output-to     "resources/public/hoc-schedule.js"
+ :optimizations :advanced}

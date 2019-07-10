@@ -1,7 +1,8 @@
 (ns hoc-schedule.core
   (:require [goog.dom :as gdom]
             [poor.hiccup :refer [h]]
-            [goog.string :refer [format]]
+            [goog.string]
+            [goog.string.format]
             [goog.date.DateTime :as DateTime])
   (:import [goog.date DateTime]))
 
@@ -37,7 +38,7 @@
 
 (defn format-time [ts]
   (let [dt (date-time ts)]
-    (format "%02d:%02d" (.getHours dt) (.getMinutes dt))))
+    (goog.string.format "%02d:%02d" (.getHours dt) (.getMinutes dt))))
 
 (defn event-view [day-events]
   [:table.collapse.ba.br2.b--black-10.pv2.ph3.mt4.sans-serif
