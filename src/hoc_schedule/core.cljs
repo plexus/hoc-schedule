@@ -17,8 +17,9 @@
      :type :schedule}))
 
 (defn activities->events [activities]
-  (for [{:strs [name start_time end_time]} (apply concat (vals activities))]
+  (for [{:strs [id name start_time end_time]} (apply concat (vals activities))]
     {:name name
+     :url (str "https://activities.heartofclojure.eu/activities/" id)
      :start (js/Date.parse start_time)
      :end (js/Date.parse end_time)
      :type :activity}))
@@ -52,10 +53,13 @@
       (cons
        [:tr.striped--near-white
         [:td.ph3.pt3.pb2.b {:colspan 2} (day-of-week dt) " " (day-of-month dt) "/" (month dt)]]
-       (for [{:keys [name start end type]} events]
+       (for [{:keys [name start end type url]} events]
          [:tr.striped--near-white
           [:td.pv2.ph3 (format-time start) " — " (format-time end)]
-          [(if (= :activity type) :td.pv2.ph3.bg-washed-green :td.pv2.ph3) name]])))]])
+          [(if (= :activity type) :td.pv2.ph3.bg-washed-green :td.pv2.ph3)
+           (if url
+             [:a {:href url} name]
+             name)]])))]])
 
 (defn draw [activities schedule]
   (def activities activities)
