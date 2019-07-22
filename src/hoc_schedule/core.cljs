@@ -34,7 +34,7 @@
   (.getDate dt))
 
 (defn day-of-week [dt]
-  (get ["Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"]
+  (get ["Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday"]
        (.getDay dt)))
 
 (defn format-time [ts]
@@ -68,6 +68,7 @@
   (let [day-events (->> (activities->events activities)
                         (concat (schedule->events schedule))
                         (group-by (comp (juxt month day-of-month) date-time :start))
+                        (into {} (map (juxt key (comp (partial sort-by :start) val))))
                         (sort-by key))]
     (gdom/append (app-element) (h (event-view day-events)))))
 

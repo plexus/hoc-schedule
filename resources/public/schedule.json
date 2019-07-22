@@ -1,6 +1,6 @@
 {
 	"copyright":"Licensed under a Creative Commons Attribution-NonCommercial 3.0 License http:\/\/creativecommons.org\/licenses\/by-nc\/3.0\/. Free for non-commercial use. Contact halvin@clashfinder.com for other uses.",
-	"modified":"2019-07-03 13:37",
+	"modified":"2019-07-10 07:28",
 	"name":"Heart of Clojure 2019",
 	"id":"heartofclojure2019",
 	"url":"https:\/\/clashfinder.com\/s\/heartofclojure2019\/",
@@ -12,7 +12,7 @@
 		{
 			"name":"New Stage",
 			"events":[
-				{"name":"Doors & breakfast","short":"doorsb(1)","start":"2019-08-02 09:00","end":"2019-08-02 09:30"},
+				{"name":"Doors & light breakfast","short":"doorsl(1)","start":"2019-08-02 09:00","end":"2019-08-02 09:30"},
 				{"name":"Introduction","short":"introd(1)","start":"2019-08-02 09:30","end":"2019-08-02 09:45"},
 				{"name":"Yulia Startsev - To loosen up, to put together.","short":"yulias(1)","start":"2019-08-02 09:45","end":"2019-08-02 10:30"},
 				{"name":"Fabrizio Ferrai - Live-coding a Compiler: A Challenge ","short":"fabriz(1)","start":"2019-08-02 11:00","end":"2019-08-02 11:30"},
@@ -24,7 +24,7 @@
 				{"name":"Ramón Huidobro - How teaching kids to code can make you a better developer","short":"ramnhu(1)","start":"2019-08-02 16:30","end":"2019-08-02 17:00"},
 				{"name":"Sarah Groff Hennigh-Palermo - Raving Through the 90s with SVG and Clojurescript","short":"sarahg(1)","start":"2019-08-02 17:05","end":"2019-08-02 17:35"},
 				{"name":"Closing remarks","short":"closin(1)","start":"2019-08-02 17:35","end":"2019-08-02 17:50"},
-				{"name":"Doors & breakfast","short":"doorsb(2)","start":"2019-08-03 09:45","end":"2019-08-03 10:15"},
+				{"name":"Doors & light breakfast","short":"doorsl(2)","start":"2019-08-03 09:45","end":"2019-08-03 10:15"},
 				{"name":"Daniel Compton - Money for Nothing: The past and future of funding OSS","short":"daniel(1)","start":"2019-08-03 10:15","end":"2019-08-03 10:45"},
 				{"name":"Chelsey Mitchell - Does Clojure wear Prada?","short":"chelse(1)","start":"2019-08-03 11:05","end":"2019-08-03 11:35"},
 				{"name":"Maarten Truyens - Innovation in an immutable industry: Clojure in law","short":"maarte(1)","start":"2019-08-03 11:40","end":"2019-08-03 12:10"},
