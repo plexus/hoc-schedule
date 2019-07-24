@@ -9,23 +9,32 @@
 (defn app-element []
   (gdom/getElement "hoc-schedule"))
 
+(def activitiy-date-pattern #"(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})")
+(def schedule-date-pattern #"(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})")
+
+(defn parse-int [s]
+  (let [[_ i] (re-find #"0*(\d+)" s)]
+    (js/parseInt s)))
+
+(defn parse-date [pattern date-string]
+  (let [[_ & parts] (re-find pattern date-string)
+        [year month day hours minutes] (map parse-int parts)]
+    (js/Date. year (dec month) day hours minutes)))
+
 (defn schedule->events [schedule]
   (for [{:strs [name start end]} (get-in schedule ["locations" 0 "events"])]
     {:name name
-     :start (js/Date.parse start)
-     :end (js/Date.parse end)
+     :start (parse-date schedule-date-pattern start)
+     :end (parse-date schedule-date-pattern end)
      :type :schedule}))
 
 (defn activities->events [activities]
   (for [{:strs [id name start_time end_time]} (apply concat (vals activities))]
     {:name name
      :url (str "https://activities.heartofclojure.eu/activities/" id)
-     :start (js/Date.parse start_time)
-     :end (js/Date.parse end_time)
+     :start (parse-date activitiy-date-pattern start_time)
+     :end (parse-date activitiy-date-pattern end_time)
      :type :activity}))
-
-(defn date-time [ts]
-  (DateTime/fromTimestamp ts))
 
 (defn month [dt]
   (inc (.getMonth dt)))
@@ -37,9 +46,8 @@
   (get ["Sunday" "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday"]
        (.getDay dt)))
 
-(defn format-time [ts]
-  (let [dt (date-time ts)]
-    (goog.string.format "%02d:%02d" (.getHours dt) (.getMinutes dt))))
+(defn format-time [dt]
+  (goog.string.format "%02d:%02d" (.getHours dt) (.getMinutes dt)))
 
 (defn event-view [day-events]
   [:table.collapse.ba.br2.b--black-10.pv2.ph3.mt4.sans-serif
@@ -49,7 +57,7 @@
      [:th "Event / Activity"]]]
    [:tbody
     (for [[_ events] day-events
-          :let [dt (date-time (:start (first events)))]]
+          :let [dt (:start (first events))]]
       (cons
        [:tr.striped--near-white
         [:td.ph3.pt3.pb2.b {:colspan 2} (day-of-week dt) " " (day-of-month dt) "/" (month dt)]]
@@ -67,7 +75,7 @@
   (gdom/removeChildren (app-element))
   (let [day-events (->> (activities->events activities)
                         (concat (schedule->events schedule))
-                        (group-by (comp (juxt month day-of-month) date-time :start))
+                        (group-by (comp (juxt month day-of-month) :start))
                         (into {} (map (juxt key (comp (partial sort-by :start) val))))
                         (sort-by key))]
     (gdom/append (app-element) (h (event-view day-events)))))
