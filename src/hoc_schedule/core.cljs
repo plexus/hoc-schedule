@@ -83,18 +83,19 @@
       (for [{:keys [name start end type url] :as ev} events]
         (if (= "current-time" type)
           [:div.bg-pink-t60.f3.tc.white.b {:id "current-time"} "👉 you are here 👈"]
-          [:div.dt.ba.b--near-white.pa2.pa3-ns.w-100
+          [:div.dt.ba.b--near-white.ph2.pv3.pa3-ns.w-100
            [:div.dtc.w3.h3.w4-ns.h4-ns
             (case type
               :activity [:img.w3.h3.w4-ns.h4-ns.br-100 {:src (:img ev)}]
               :talk [:img.w3.w4-ns {:src (str "https://heartofclojure.eu" (get-in ev [:speaker-data "img"]))}]
               [:div])]
            [:div.v-mid.dtc.ph3
-            [:div.mb3
+            [:div.mb2
              [:span.dib.v-mid.gray.f4 (format-time start) " — " (format-time end)]
              (case type
-               :activity [:span.dib.v-mid.ttu.bg-green.pv1.ph2.br2.b.white.ml2.f7 "activity"]
-               :talk [:span.dib.v-mid.ttu.bg-pink-t60.pv1.ph2.br2.b.white.ml2.f7 "talk"]
+               :activity [:span.dib.v-mid.ttu.bg-green.pv1.ph2.br2.b.white.ml2.f7.o-60 "activity"]
+               :talk [:span.dib.v-mid.ttu.bg-pink-t60.pv1.ph2.br2.b.white.ml2.f7.o-60
+                      (if (get-in ev [:speaker-data "keynote"]) "keynote" "talk")]
                nil)]
             (case type
               :activity [:a.b.db.f3.link.pink-t60
