@@ -82,7 +82,7 @@
       [:div.f2.tc.pa3.mt5 (day-of-week dt) " " (day-of-month dt) "/" (month dt)]
       (for [{:keys [name start end type url] :as ev} events]
         (if (= "current-time" type)
-          [:div.bg-pink-t60.f3.tc.white.b {:id "current-time"} "👉 you are here 👈"]
+          [:div.bg-pink-t60.f3.tc.white.b.pa2 {:id "current-time"} (str "👉  It's " (day-of-week dt) "  👈")]
           [:div.dt.ba.b--near-white.ph2.pv3.pa3-ns.w-100
            [:div.dtc.w3.h3.w4-ns.h4-ns
             (case type
