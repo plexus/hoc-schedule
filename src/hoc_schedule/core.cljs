@@ -45,15 +45,13 @@
                              (filter #(= (get % "id") (clashfinder-id->speaker-id short)))
                              first)]]
       {:name name
-       :speaker-data speaker-data
+       :speaker-data speaker
        :start (parse-date schedule-date-pattern start)
        :end (parse-date schedule-date-pattern end)
-       :type (if speaker-data :talk :schedule)})))
+       :type (if speaker :talk :schedule)})))
 
 (defn activities->events [activities]
-  ;; (js/console.log activities)
-  (for [{:strs [id name start_time end_time] :as a}
-        (apply concat (vals activities))]
+  (for [{:strs [id name start_time end_time] :as a} (apply concat (vals activities))]
     {:name name
      :url (str "https://activities.heartofclojure.eu/activities/" id)
      :start (parse-date activitiy-date-pattern start_time)
@@ -107,7 +105,13 @@
                      {:href (str "https://heartofclojure.eu/speakers#" (get-in ev [:speaker-data "id"]))
                       :target "_blank"}
                      name]
-              [:span.b.db.f3 name])]]))])])
+              [:span.b.db.f3 name])
+            (when (= :activity type)
+              (let [remaining (- (:max-participants ev) (:participants ev))]
+                [:span.db.mt2
+                 (if (pos? remaining)
+                   (str remaining " / " (:max-participants ev) " spots available")
+                   "fully booked")]))]]))])])
 
 (defn draw [activities schedule]
   (def activities activities)
