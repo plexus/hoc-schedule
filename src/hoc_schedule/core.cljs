@@ -39,14 +39,11 @@
     (js/Date. year (dec month) day hours minutes)))
 
 (defn schedule->events [schedule]
-  (for [{:strs [name start end short] :as x} (get-in schedule ["locations" 0 "events"])
-        :let [speaker-data (->> (js->clj (gobj/get js/window "hoc_speaker_data"))
-                                (filter #(= (get % "id") (clashfinder-id->speaker-id short)))
-                                first)]]
-    (do
-      ;; (js/console.log (->> (js->clj (gobj/get js/window "hoc_speaker_data"))
-      ;;                      (filter #(= (get % "id") (clashfinder-id->speaker-id short)))
-      ;;                      first))
+  (let [all-speaker-data (js->clj (gobj/get js/window "hoc_speaker_data"))]
+    (for [{:strs [name start end short] :as x} (get-in schedule ["locations" 0 "events"])
+          :let [speaker (->> all-speaker-data
+                             (filter #(= (get % "id") (clashfinder-id->speaker-id short)))
+                             first)]]
       {:name name
        :speaker-data speaker-data
        :start (parse-date schedule-date-pattern start)
